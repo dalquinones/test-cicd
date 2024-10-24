@@ -36,7 +36,7 @@ jobs:
 
       # Ejecutar el script de clasificación
       - name: Run classification script
-        run: python main.py
+        run: python src/main.py
 
       # Construir la imagen Docker
       - name: Build Docker Image
