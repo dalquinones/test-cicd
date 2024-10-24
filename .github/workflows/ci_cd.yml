@@ -32,15 +32,14 @@ jobs:
       # Ejecutar pruebas
       - name: Run tests
         run: |
-          python -m unittest discover -s . -p "test_*.py"
+          cd tests
+          python -m unittest test_classification.py
 
       # Ejecutar el script de clasificación
       - name: Run classification script
         run: python src/main.py
 
-      # Construir la imagen Docker
-      - name: Build Docker Image
-        run: docker build -t classification_app .
+
 
   deploy:
     runs-on: ubuntu-latest
@@ -51,6 +50,10 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
+      # Construir la imagen Docker
+      - name: Build Docker Image
+        run: docker build -t classification_app .
+        
       # Construir y ejecutar la imagen Docker en modo app
       - name: Run Docker Container
         run: |
