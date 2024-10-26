@@ -32,8 +32,7 @@ jobs:
       # Ejecutar pruebas
       - name: Run tests
         run: |
-          cd tests
-          python -m unittest test_classification.py
+          PYTHONPATH=src python -m unittest discover -s tests -p "*.py"
 
       # Ejecutar el script de clasificación
       - name: Run classification script
